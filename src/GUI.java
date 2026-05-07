@@ -11,25 +11,32 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * This class represents the graphical user interface (GUI) for a to-do list application.
+ * It allows users to add, remove, and edit tasks in the list. 
+ * The GUI is built using Java Swing components and interacts with the Logic class to manage the tasks.
+ */
 
 public class GUI extends JFrame {
     private JList<String> taskList;
     private JTextField addTaskField;
-
+// Constructor to set up the GUI components and event listeners
+    @SuppressWarnings("Convert2Lambda")
     public GUI() {
         setTitle("To do List");
-        setSize(600, 300);
+        setSize(900, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-
+// Left panel for buttons
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-
+// Button panel to hold the action buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        
+//  Add button to add tasks to the list
         JButton AddButton = new JButton("Add Task");
         AddButton.addActionListener(new ActionListener() {
+            @SuppressWarnings("override")
             public void actionPerformed(ActionEvent e) {
                 String task = addTaskField.getText();
                 ArrayList<String> taskList = new ArrayList<>();
@@ -40,9 +47,10 @@ public class GUI extends JFrame {
             }
         });
         buttonPanel.add(AddButton);
-
+//  Remove button to remove selected tasks from the list   
         JButton RemoveButton = new JButton("Remove Task");
         RemoveButton.addActionListener(new ActionListener() {
+            @SuppressWarnings("override")
             public void actionPerformed(ActionEvent e) {
                 int index = taskList.getSelectedIndex();
                 if (index >= 0) {
@@ -56,9 +64,10 @@ public class GUI extends JFrame {
             }
         });
         buttonPanel.add(RemoveButton);
-
+//  Edit button to edit selected tasks in the list
         JButton EditButton = new JButton("Edit Task");
         EditButton.addActionListener(new ActionListener() {
+            @SuppressWarnings("override")
             public void actionPerformed(ActionEvent e) {
                 int index = taskList.getSelectedIndex();
                 if (index >= 0) {
@@ -77,23 +86,23 @@ public class GUI extends JFrame {
             }
         });
         buttonPanel.add(EditButton);
-
+// Add the button panel to the left panel and add the left panel to the frame
         leftPanel.add(buttonPanel);
         add(leftPanel, BorderLayout.WEST);
-
+// Center panel for adding new tasks
         JPanel centerPanel = new JPanel();
         JLabel AddLabel = new JLabel("Enter a task:");
         addTaskField = new JTextField(30);
         centerPanel.add(AddLabel);
         centerPanel.add(addTaskField);
         add(centerPanel, BorderLayout.CENTER);
-
+//  Right panel to display the list of tasks
         taskList = new JList<>();
         add(taskList, BorderLayout.EAST);
-
+//  Update the task list to display the current tasks and make the frame visible
         setVisible(true);
     }
-
+//  Method to update the task list display with the current tasks from the Logic class
     private void updateTaskList() {
         ArrayList<String> tasks = Logic.getTasks();
         String[] numberedTasks = new String[tasks.size()];
@@ -102,8 +111,8 @@ public class GUI extends JFrame {
         }
         taskList.setListData(numberedTasks);
     }
-
-    public static void main(String[] args) throws Exception {
+//  Main method to launch the application
+    public static void main(String[] args) {
         new GUI();
     }
 }

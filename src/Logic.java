@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Logic {
-    private static ArrayList<String> tasks = new ArrayList<>();
+    private static final ArrayList<String> tasks = new ArrayList<>();
 
 //add tasks to the list
     public static void Add(ArrayList<String> newTasks) {

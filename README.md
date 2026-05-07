@@ -39,12 +39,14 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 - **Adding a Task**:
   - Enter the task description in the text field labeled "Enter a task:".
   - Click the "Add Task" button to add it to the list. The task will appear in the numbered list on the right.
-
+![alt text](image.png)
 - **Removing a Task**:
   - Select a task from the list by clicking on it.
   - Click the "Remove Task" button. A confirmation dialog will appear if no task is selected.
-
+![alt text](<Screenshot 2026-05-07 160402.png>)
++I have no idea how to screenshot this
 - **Editing a Task**:
   - Select a task from the list.
   - Click the "Edit Task" button. A dialog will prompt you to enter the new task text.
   - Enter the updated text and confirm to save the changes.
+  ![alt text](<Screenshot 2026-05-07 160422.png>)
